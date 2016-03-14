@@ -14,6 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xhQ-Vg-O5f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J3o-Mm-KN0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OxJ-hB-zL2">
@@ -39,34 +40,64 @@
                                                     </mask>
                                                 </variation>
                                             </tableView>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f34-lJ-wAK">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="gge-nz-mE3"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="gge-nz-mE3"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="gge-nz-mE3"/>
+                                                    </mask>
+                                                </variation>
+                                            </scrollView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="YJr-r3-kWv" firstAttribute="leading" secondItem="qts-OI-eqe" secondAttribute="leading" id="3eU-YO-WtL"/>
+                                            <constraint firstItem="f34-lJ-wAK" firstAttribute="top" secondItem="qts-OI-eqe" secondAttribute="top" id="551-AN-LvO"/>
+                                            <constraint firstItem="f34-lJ-wAK" firstAttribute="leading" secondItem="YJr-r3-kWv" secondAttribute="trailing" constant="8" id="FMn-hE-fg2">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                            </constraint>
                                             <constraint firstAttribute="width" constant="1500" id="Mei-wz-0uU"/>
                                             <constraint firstAttribute="bottom" secondItem="YJr-r3-kWv" secondAttribute="bottom" id="TM9-bp-82A"/>
                                             <constraint firstItem="YJr-r3-kWv" firstAttribute="top" secondItem="qts-OI-eqe" secondAttribute="top" id="sW3-AI-AXi"/>
+                                            <constraint firstAttribute="bottom" secondItem="f34-lJ-wAK" secondAttribute="bottom" id="xud-Mf-HDo"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="YJr-r3-kWv"/>
+                                                <exclude reference="f34-lJ-wAK"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="Mei-wz-0uU"/>
                                                 <exclude reference="3eU-YO-WtL"/>
                                                 <exclude reference="TM9-bp-82A"/>
                                                 <exclude reference="sW3-AI-AXi"/>
+                                                <exclude reference="551-AN-LvO"/>
+                                                <exclude reference="FMn-hE-fg2"/>
+                                                <exclude reference="xud-Mf-HDo"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="YJr-r3-kWv"/>
+                                                <include reference="f34-lJ-wAK"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="Mei-wz-0uU"/>
                                                 <include reference="3eU-YO-WtL"/>
                                                 <include reference="TM9-bp-82A"/>
                                                 <include reference="sW3-AI-AXi"/>
+                                                <include reference="551-AN-LvO"/>
+                                                <include reference="FMn-hE-fg2"/>
+                                                <include reference="xud-Mf-HDo"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -116,10 +147,10 @@
                                 <exclude reference="OxJ-hB-zL2"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="u5g-Le-mZi"/>
                                 <exclude reference="wZu-yx-VHE"/>
                                 <exclude reference="yNw-6a-hMF"/>
                                 <exclude reference="zdJ-ms-gNX"/>
-                                <exclude reference="u5g-Le-mZi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -127,20 +158,23 @@
                                 <include reference="OxJ-hB-zL2"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="u5g-Le-mZi"/>
                                 <include reference="wZu-yx-VHE"/>
                                 <include reference="yNw-6a-hMF"/>
                                 <include reference="zdJ-ms-gNX"/>
-                                <include reference="u5g-Le-mZi"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0fz-13-4FF"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="800"/>
+                    <connections>
+                        <outlet property="goodsPageWidth" destination="gge-nz-mE3" id="I8g-b7-cOE"/>
+                        <outlet property="profilePageWidth" destination="HgW-o4-2wC" id="rJS-da-qiN"/>
+                        <outlet property="scrollView" destination="OxJ-hB-zL2" id="vWW-5w-Slb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8r-nw-i4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="421.5"/>
+            <point key="canvasLocation" x="193.5" y="426"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O43-z4-zvD">
@@ -158,7 +192,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hl-Qk-EZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385.5" y="421.5"/>
+            <point key="canvasLocation" x="-438" y="426"/>
         </scene>
     </scenes>
 </document>
