@@ -82,12 +82,20 @@ class RootVC: UINavigationController {
         img.layer.borderWidth = CGFloat(0.5)
         img.layer.borderColor = UIColor.redColor().CGColor
         
-        let usrName = UILabel(frame: CGRect(x: img.frame.maxX + 10, y: 10, width: 2*screenWidth/5, height: screenWidth/5))
+        let usrName = UILabel(frame: CGRect(x: img.frame.maxX + 10, y: 10, width: 2*screenWidth/5, height: screenWidth/5 + 20))
         button.addSubview(img)
         button.addSubview(usrName)
+        //button.backgroundColor = UIColor(red: 72/255, green: 45/255, blue: 45/255, alpha: 1.0)
         button.addTarget(self, action: Selector("usrInformationBtnClk"), forControlEvents: UIControlEvents.TouchUpInside)
-        containerView.addSubview(button)
-        button.backgroundColor = UIColor.yellowColor()
+        
+        var bottomView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth/5 + 20))
+        bottomView.addSubview(button)
+        bottomView.image = UIImage(named: "backGroundImg3")
+        containerView.addSubview(bottomView)
+        
+        var separateLine = UIImageView(frame: CGRect(x: 0, y: bottomView.frame.maxY, width: screenWidth, height: 10 ))
+        containerView.addSubview(separateLine)
+        separateLine.image = UIImage(named: "backGroundImg2")
         
         return button.frame.maxY
     }
@@ -126,6 +134,10 @@ class RootVC: UINavigationController {
         containerView.addSubview(subView4)
         containerView.addSubview(subView5)
         containerView.addSubview(subView6)
+        
+        var separateLine = UIImageView(frame: CGRect(x: 0, y: subView6.frame.maxY, width: screenWidth, height: 10 ))
+        containerView.addSubview(separateLine)
+        separateLine.image = UIImage(named: "backGroundImg2")
         
         return subView6.frame.maxY
     }

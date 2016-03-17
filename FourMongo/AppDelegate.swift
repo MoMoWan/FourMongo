@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var rootVC = RootVC()
         self.window?.rootViewController = rootVC
         self.window?.makeKeyAndVisible()
+
+        
         return true
     }
 
