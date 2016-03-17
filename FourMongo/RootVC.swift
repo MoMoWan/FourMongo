@@ -19,6 +19,16 @@ class RootVC: UINavigationController {
     var mainScrollView:UIScrollView?
     //在该控制器下添加三个容器页面,高度需要去除导航栏64
     func addThreeSubContainer(){
+        //最底层创建毛玻璃
+        var boottomImageView = UIImageView(frame: self.view.frame)
+        boottomImageView.image = UIImage(named: "backGroundIMG")
+        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.frame = boottomImageView.frame
+        effectView.alpha = 0.5
+        boottomImageView.addSubview(effectView)
+        self.view.addSubview(boottomImageView)
+        
         mainScrollView = UIScrollView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight - 64))
         mainScrollView?.contentSize = CGSize(width: 3*screenWidth, height: screenHeight - 64)
         mainScrollView?.pagingEnabled = true
@@ -28,11 +38,12 @@ class RootVC: UINavigationController {
         //1、添加第一个页面
         var profilePageView = UIScrollView(frame: self.view.frame)
         profilePageView.contentSize = CGSize(width: screenWidth, height: screenHeight + 40)
-        profilePageView.backgroundColor = UIColor(red: 35, green: 57, blue: 66, alpha: 1)
+        //profilePageView.backgroundColor = UIColor(red: 35, green: 57, blue: 66, alpha: 1)
         mainScrollView?.addSubview(profilePageView)
         
         var maxY = one_addSubView1(profilePageView)
-        one_addSubView2(profilePageView,startMaxY: maxY)
+        maxY = one_addSubView2(profilePageView,startMaxY: maxY)
+        addGuessYouLike(profilePageView, startMaxY: maxY)
         
         //2、添加第二个页面（商品详细信息页面）
         var goodsInfoView = UIScrollView(frame: CGRect(x: screenWidth, y: 64, width: screenWidth, height: screenHeight - 64))
@@ -51,6 +62,9 @@ class RootVC: UINavigationController {
         searchPageView.backgroundColor = UIColor.darkTextColor() //
         
         self.view.addSubview(mainScrollView!)
+        
+        
+
     }
 
     /**
@@ -83,7 +97,7 @@ class RootVC: UINavigationController {
      - parameter containerView: 父容器
      - parameter startMaxY:返回最后添加完最下面一个视图的最底部的frame值
      */
-    func one_addSubView2(containerView:UIView,var startMaxY:CGFloat){
+    func one_addSubView2(containerView:UIView,var startMaxY:CGFloat)->CGFloat{
         startMaxY = startMaxY + 10
         
         let  w = (screenWidth - 60 )/3
@@ -112,6 +126,20 @@ class RootVC: UINavigationController {
         containerView.addSubview(subView4)
         containerView.addSubview(subView5)
         containerView.addSubview(subView6)
+        
+        return subView6.frame.maxY
+    }
+
+    /**
+     猜你喜欢
+     
+     - parameter containerView: containerView description
+     - parameter startMaxY:     startMaxY description
+     */
+    func addGuessYouLike(containerView:UIView,var startMaxY:CGFloat){
+        var view = UIView(frame:CGRect(x: 0, y: startMaxY + 10, width: screenWidth, height: screenWidth/5 + 20))
+        containerView.addSubview(view)
+        view.backgroundColor = UIColor.redColor()
         
     }
 
