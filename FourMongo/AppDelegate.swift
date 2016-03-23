@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds )
         self.window?.backgroundColor = UIColor.whiteColor()
-        var rootVC = RootVC()
+        var rootVC = RootTablebarVC() 
         self.window?.rootViewController = rootVC
         self.window?.makeKeyAndVisible()
 
@@ -51,4 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
+
+
 

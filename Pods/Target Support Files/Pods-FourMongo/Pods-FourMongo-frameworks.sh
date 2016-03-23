@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FourMongo/Alamofire.framework"
+  install_framework "Pods-FourMongo/ChameleonFramework.framework"
   install_framework "Pods-FourMongo/EAIntroView.framework"
   install_framework "Pods-FourMongo/EARestrictedScrollView.framework"
   install_framework "Pods-FourMongo/IQKeyboardManagerSwift.framework"
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FourMongo/Alamofire.framework"
+  install_framework "Pods-FourMongo/ChameleonFramework.framework"
   install_framework "Pods-FourMongo/EAIntroView.framework"
   install_framework "Pods-FourMongo/EARestrictedScrollView.framework"
   install_framework "Pods-FourMongo/IQKeyboardManagerSwift.framework"

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ChameleonFramework
+import DOFavoriteButton
 
 
 let screenWidth = UIScreen.mainScreen().bounds.width
@@ -14,14 +16,14 @@ let screenHeight = UIScreen.mainScreen().bounds.height
 
 let scrollViewHeight = screenHeight - 64
 
-class RootVC: UINavigationController {
+class FirstVC: UINavigationController {
     
     var mainScrollView:UIScrollView?
     //在该控制器下添加三个容器页面,高度需要去除导航栏64
     func addThreeSubContainer(){
         //最底层创建毛玻璃
         var boottomImageView = UIImageView(frame: self.view.frame)
-        boottomImageView.image = UIImage(named: "backGroundIMG")
+        //boottomImageView.image = UIImage(named: "backGroundIMG")
         var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         var effectView = UIVisualEffectView(effect: blurEffect)
         effectView.frame = boottomImageView.frame
@@ -39,6 +41,7 @@ class RootVC: UINavigationController {
         var profilePageView = UIScrollView(frame: self.view.frame)
         profilePageView.contentSize = CGSize(width: screenWidth, height: screenHeight + 40)
         //profilePageView.backgroundColor = UIColor(red: 35, green: 57, blue: 66, alpha: 1)
+        profilePageView.backgroundColor = UIColor.flatGreenColorDark()
         mainScrollView?.addSubview(profilePageView)
         
         var maxY = one_addSubView1(profilePageView)
@@ -54,12 +57,12 @@ class RootVC: UINavigationController {
         goodsInfoView.showsHorizontalScrollIndicator = false
         goodsInfoView.showsVerticalScrollIndicator = false
         
-        goodsInfoView.backgroundColor = UIColor.yellowColor() //
+        goodsInfoView.backgroundColor = UIColor.randomFlatColor() //
         
         //3、添加第三个页面（商品搜索）
         var searchPageView = UITableView(frame: CGRect(x: 2*screenWidth, y: 0, width: screenWidth, height: scrollViewHeight))
         mainScrollView?.addSubview(searchPageView)
-        searchPageView.backgroundColor = UIColor.darkTextColor() //
+        searchPageView.backgroundColor = UIColor.randomFlatColor() //
         
         self.view.addSubview(mainScrollView!)
         
@@ -78,12 +81,17 @@ class RootVC: UINavigationController {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth/5 + 20))
         //用户头像
         let img = UIImageView(frame: CGRect(x: 10, y: 10, width: screenWidth/5, height: screenWidth/5))
+        let tapbutton = DOFavoriteButton(frame: img.frame, image: UIImage(named: "star.png"))
+        
+        self.view.addSubview(button)
+        
         img.layer.cornerRadius = screenWidth/10
         img.layer.borderWidth = CGFloat(0.5)
-        img.layer.borderColor = UIColor.redColor().CGColor
+        img.layer.borderColor = UIColor.randomFlatColor().CGColor
         
         let usrName = UILabel(frame: CGRect(x: img.frame.maxX + 10, y: 10, width: 2*screenWidth/5, height: screenWidth/5 + 20))
         button.addSubview(img)
+        button.addSubview(tapbutton)
         button.addSubview(usrName)
         //button.backgroundColor = UIColor(red: 72/255, green: 45/255, blue: 45/255, alpha: 1.0)
         button.addTarget(self, action: Selector("usrInformationBtnClk"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -113,20 +121,20 @@ class RootVC: UINavigationController {
         let length = CGFloat(10)
         
         var subView1 = UIView(frame: CGRect(x: 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView1.backgroundColor = UIColor.redColor()
+        subView1.backgroundColor = UIColor.randomFlatColor()
         var subView2 = UIView(frame: CGRect(x: subView1.frame.maxX + 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView2.backgroundColor = UIColor.redColor()
+        subView2.backgroundColor = UIColor.randomFlatColor()
         var subView3 = UIView(frame: CGRect(x: subView2.frame.maxX + 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView3.backgroundColor = UIColor.redColor()
+        subView3.backgroundColor = UIColor.randomFlatColor()
         
         
         startMaxY = subView3.frame.maxY + 10
         var subView4 = UIView(frame: CGRect(x: 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView4.backgroundColor = UIColor.redColor()
+        subView4.backgroundColor = UIColor.randomFlatColor()
         var subView5 = UIView(frame: CGRect(x: subView1.frame.maxX + 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView5.backgroundColor = UIColor.redColor()
+        subView5.backgroundColor = UIColor.randomFlatColor()
         var subView6 = UIView(frame: CGRect(x: subView2.frame.maxX + 10, y: startMaxY, width: (screenWidth - 40 )/3, height: (screenWidth - 60 )/3))
-        subView6.backgroundColor = UIColor.redColor()
+        subView6.backgroundColor = UIColor.randomFlatColor()
         
         containerView.addSubview(subView1)
         containerView.addSubview(subView2)
@@ -151,7 +159,7 @@ class RootVC: UINavigationController {
     func addGuessYouLike(containerView:UIView,var startMaxY:CGFloat){
         var view = UIView(frame:CGRect(x: 0, y: startMaxY + 10, width: screenWidth, height: screenWidth/5 + 20))
         containerView.addSubview(view)
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.randomFlatColor()
         
     }
 
@@ -163,6 +171,7 @@ class RootVC: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.automaticallyAdjustsScrollViewInsets = false
+        self.view.backgroundColor = UIColor.flatWhiteColor()
         addThreeSubContainer()
     }
 
